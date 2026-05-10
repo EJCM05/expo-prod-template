@@ -29,8 +29,7 @@ export default function RootLayout() {
             contentStyle: { backgroundColor: '#0f172a' },
           }}
         >
-          <Stack.Screen name="index" options={{ title: 'Home' }} />
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="index" options={{ title: 'Inicio' }} />
         </Stack>
         <StatusBar style="light" />
 

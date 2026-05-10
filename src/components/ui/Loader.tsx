@@ -1,11 +1,16 @@
 import { View, ActivityIndicator, Text, Modal } from 'react-native';
 
+interface LoaderProps {
+  visible?: boolean;
+  message?: string;
+}
+
 /**
  * Loader Global Reutilizable
  * Puedes editar el diseño aquí (colores, iconos, animaciones)
  * y se reflejará en toda la aplicación.
  */
-export const Loader = ({ visible = false, message = 'Cargando...' }) => {
+export const Loader = ({ visible = false, message = 'Cargando...' }: LoaderProps) => {
   if (!visible) return null;
 
   return (

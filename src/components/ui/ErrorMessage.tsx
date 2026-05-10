@@ -1,7 +1,12 @@
 import { View, Text, TouchableOpacity } from 'react-native';
 import { CircleAlert, RotateCcw } from 'lucide-react-native';
 
-export const ErrorMessage = ({ error = 'Algo salió mal', onRetry }) => (
+interface ErrorMessageProps {
+  error?: string;
+  onRetry?: () => void;
+}
+
+export const ErrorMessage = ({ error = 'Algo salió mal', onRetry }: ErrorMessageProps) => (
   <View className="flex-1 items-center justify-center p-6 bg-slate-900">
     <CircleAlert color="#ef4444" size={48} />
     <Text className="text-white text-lg font-bold mt-4 text-center">{error}</Text>

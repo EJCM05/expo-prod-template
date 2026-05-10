@@ -1,7 +1,17 @@
-import { View, Text, TextInput } from 'react-native';
-import { useController } from 'react-hook-form';
+import { View, Text, TextInput, TextInputProps, KeyboardTypeOptions } from 'react-native';
+import { useController, Control, FieldValues, Path, FieldError } from 'react-hook-form';
 
-export const FormInput = ({ 
+interface FormInputProps<T extends FieldValues> extends Omit<TextInputProps, 'onChangeText' | 'value'> {
+  name: Path<T>;
+  control: Control<T>;
+  label?: string;
+  error?: FieldError;
+  placeholder?: string;
+  secureTextEntry?: boolean;
+  keyboardType?: KeyboardTypeOptions;
+}
+
+export const FormInput = <T extends FieldValues>({ 
   name, 
   control, 
   label, 
@@ -10,11 +20,11 @@ export const FormInput = ({
   secureTextEntry,
   keyboardType = 'default',
   ...props 
-}) => {
+}: FormInputProps<T>) => {
   const { field } = useController({
     control,
     name,
-    defaultValue: '',
+    defaultValue: '' as any,
   });
 
   return (

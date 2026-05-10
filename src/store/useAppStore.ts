@@ -1,6 +1,17 @@
 import { create } from 'zustand';
 
-export const useAppStore = create((set) => ({
+interface AppState {
+  user: any | null;
+  isLoggedIn: boolean;
+  setUser: (user: any) => void;
+  logout: () => void;
+  isLoading: boolean;
+  loadingMessage: string;
+  showLoader: (message?: string) => void;
+  hideLoader: () => void;
+}
+
+export const useAppStore = create<AppState>((set) => ({
   // Auth State
   user: null,
   isLoggedIn: false,
